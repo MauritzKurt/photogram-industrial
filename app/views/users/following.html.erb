@@ -1,1 +1,29 @@
-users#following
+<h1><%= @user.username.capitalize %> is Following:</h1>
+
+<ul class="nav nav-pills nav-justified">
+      <li class="nav-item">
+        <%= link_to "Posts", user_path(@user.username), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Liked photos", liked_path(@user.username), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Feed", feed_path(@user.username), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Followers", followers_path(@user.username), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Following", following_path(@user.username), class: "nav-link" %>
+      </li>
+    </ul>
+
+<div class="row mb-4">
+  <div class="col-md-4 offset-md-4">
+    <div class="list-group">
+      <% @user.leaders.each do |leader| %>
+        <a href="/<%= leader.username %>" class="list-group-item list-group-item-action"><%= leader.username %></a>
+      <% end %>
+    </div>
+  </div>
+</div>
